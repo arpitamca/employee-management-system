@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")  //It allows a frontend application, such as React running on a different origin or port, to access Spring Boot REST APIs. * Allow requests from all origins (all websites, domains, and ports).
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
@@ -42,7 +42,8 @@ public class EmployeeController {
     //Build Update Employee REST API
     @PutMapping("{id}")
     public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId, @RequestBody EmployeeDto updatedEmployee){ //@RequestBody  Take the data sent in the HTTP request body and convert it into a Java object
-       EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updatedEmployee);
+       EmployeeDto
+               employeeDto = employeeService.updateEmployee(employeeId, updatedEmployee);
        return ResponseEntity.ok(employeeDto);
     }
 
